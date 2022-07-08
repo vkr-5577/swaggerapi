@@ -1,0 +1,469 @@
+{
+	"info": {
+		"_postman_id": "c769249a-ac3c-4877-8acf-26e9bef0e984",
+		"name": "swaggers Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Access Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57d169e7-4e91-45ba-9bb3-37c97c333e13",
+						"exec": [
+							"const access1 = pm.response.json().data.access_token\r",
+							"pm.environment.set(\"Access Token1\",access1);\r",
+							"//status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "6a5f17e3-945b-405a-960f-41d58fe6c593",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic c2hvcHBpbmdfb2F1dGhfY2xpZW50OnNob3BwaW5nX29hdXRoX3NlY3JldA==",
+						"type": "text"
+					},
+					{
+						"key": "grant_type",
+						"value": "client_credentials",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/oauth2/token/client_credentials"
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d34ce669-7cf5-4a8a-a1b4-bc4421d2636b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "17c1e785-9658-42f2-8fe4-10ea03aaa52c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"aavinash134\",\r\n  \"lastname\": \"b4\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"confirm\": \"{{password}}\",\r\n  \"telephone\": \"1-541-754-3010\",\r\n  \"customer_group_id\": \"1\",\r\n  \"agree\": \"1\",\r\n  \"custom_field\": {\r\n    \"account\": {\r\n      \"1\": \"+364545454\"\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/register"
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f08bd416-0fff-490c-9d80-7970a83ec6b1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "1f89bb6a-5e58-4e13-a824-09f4f2f528c2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "forgotten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4b3bbe34-d036-43e5-9eb6-84c6b5a5e9f2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "2109335f-4185-4593-9be1-9a862648923e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/forgotten"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f694f324-59ff-46a1-b3ec-0aac156f622f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "4154613d-84a4-4d78-b634-3fa69f8fb01f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/login"
+			},
+			"response": []
+		},
+		{
+			"name": "get account details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e172810-4bd1-45d0-a502-f56a4b89f198",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "33382bf7-840b-469d-a903-c3fa876a7a51",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://rest-api.upskills.in/api/rest/account"
+			},
+			"response": []
+		},
+		{
+			"name": "update account data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5dee96b6-cfc2-487e-b4a7-318e6a5ba2e3",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "8cfb3fed-dccf-4ada-a2cd-d9eeab5f4bd7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"utpbeastthk\",\r\n  \"lastname\": \"uupavinasghh\",\r\n  \"email\": \"{{updatedemail}}\",\r\n  \"telephone\": \"1-541-754-3010\",\r\n  \"custom_field\": {\r\n    \"account\": {\r\n      \"1\": \"+364545454\"\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/account"
+			},
+			"response": []
+		},
+		{
+			"name": "updatepasswordpassword",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a394da52-3514-40a3-9d58-ec492d6e19bc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "3e1b912e-4115-4085-847d-5a0558fb909d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"{{newpassword}}\",\r\n  \"confirm\": \"{{newpassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/account/password"
+			},
+			"response": []
+		},
+		{
+			"name": "logout Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "903f6782-70e0-42d7-a1f2-02369bf140a0",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "f106bf1f-100a-4a3d-b51f-7cc3a61938bc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{updatedemail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "login Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f694f324-59ff-46a1-b3ec-0aac156f622f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "846724f4-6f50-4445-86be-e245fa61609a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{updatedemail}}\",\r\n  \"password\": \"{{newpassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/login"
+			},
+			"response": []
+		},
+		{
+			"name": "logout Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "629d36f2-f230-49dd-8fc8-b3db582307a9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "344aae88-1aa6-4e4b-a841-ad53b6579cb2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Access Token1}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{updatedemail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://rest-api.upskills.in/api/rest/logout"
+			},
+			"response": []
+		}
+	]
+}
